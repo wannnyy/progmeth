@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import component.Entity;
+import component.Field;
 import component.GolfBall;
 import sharedObject.RenderableHolder;
 
@@ -12,6 +13,8 @@ public class GameLogic {
 	private GolfBall golfBall; 
 	
 	public GameLogic() {
+		Field field = new Field();
+		RenderableHolder.getInstance().add(field);
 		this.gameObjectContainer = new ArrayList<Entity>();
 		golfBall = new GolfBall(600,400);
 		addNewObject(golfBall);
