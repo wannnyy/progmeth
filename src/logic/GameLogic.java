@@ -20,4 +20,7 @@ public class GameLogic {
 		gameObjectContainer.add(entity);
 		RenderableHolder.getInstance().add(entity);
 	}
+	public void logicUpdate(){
+		golfBall.update();
+	}
 }

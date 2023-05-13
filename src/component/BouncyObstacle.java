@@ -9,5 +9,11 @@ public class BouncyObstacle extends Obstacle implements Solid {
 	public int bounce(GolfBall gb) {
 //		return Physics.hit(gb.getSpeed(), this.getBounciness());
 	}
+
+	@Override
+	public int bounce() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 		
 }
