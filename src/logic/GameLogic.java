@@ -25,5 +25,6 @@ public class GameLogic {
 	}
 	public void logicUpdate(){
 		golfBall.update();
+//		System.out.println("golf update");
 	}
 }
