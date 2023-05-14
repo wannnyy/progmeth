@@ -9,7 +9,7 @@ import javafx.scene.shape.Line;
 import logic.CollidableEntity;
 
 public class GolfBall extends CollidableEntity {
-	private final int radius = 20;
+	private final int radius = 10;
 	private final double maxSpeed = 10;
 	private int powerPercent;
 	private double x, y, speed ,angle;
