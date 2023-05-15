@@ -91,7 +91,7 @@ public class GolfCourse extends Canvas {
 				InputUtility.mouseLeftDown();
 				InputUtility.mouseRelease = false ; 
 			}
-			System.out.println("Pressed " + InputUtility.isDrag);
+//			System.out.println("Pressed " + InputUtility.isDrag);
 		});
 
 		this.setOnMouseReleased((MouseEvent event) -> {
@@ -100,7 +100,7 @@ public class GolfCourse extends Canvas {
 				InputUtility.mouseLeftRelease();
 				InputUtility.isDrag = false;
 			}
-			System.out.println("Released " + InputUtility.isDrag);
+//			System.out.println("Released " + InputUtility.isDrag);
 //			System.out.println(InputUtility.mousePosX + " " + InputUtility.mousePosY);
 
 		});
@@ -128,7 +128,7 @@ public class GolfCourse extends Canvas {
 				InputUtility.mousePosX = event.getX();
 				InputUtility.mousePosY = event.getY();
 				InputUtility.isDrag = true;
-				System.out.println(InputUtility.isDrag);
+//				System.out.println(InputUtility.isDrag);
 			}
 		});
 	}

@@ -22,5 +22,4 @@ public class TopGamePane extends BorderPane {
 		this.setRight(shotCount);
 	}
 	
-	
 }

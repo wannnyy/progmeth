@@ -4,15 +4,12 @@ import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import logic.CollidableEntity;
 
 public class GolfBall extends CollidableEntity {
-	private final int radius = 10;
 	private final double maxSpeed = 10;
 	private int powerPercent;
-	private double x, y, speed ,angle;
+	private double speed ,angle;
 	private final double speedDecayRate = 0.25 ;
 
 	public GolfBall(double x, double y) {
@@ -20,6 +17,15 @@ public class GolfBall extends CollidableEntity {
 		this.setSpeed(0);
 		this.setX(x);
 		this.setY(y);
+		this.radius = 10 ; 
+	}
+
+	public double getAngle() {
+		return angle;
+	}
+
+	public void setAngle(double angle) {
+		this.angle = angle;
 	}
 
 	public void move() {
@@ -37,11 +43,9 @@ public class GolfBall extends CollidableEntity {
 			InputUtility.mouseRelease = false ;
 			angle = calculateAngle(); 
 			System.out.println(angle);
-//			System.out.println(this.getSpeed());
 		}
 		setSpeed(getSpeed()-speedDecayRate);
 		move();
-//		System.out.println(getSpeed());
 	}
 
 	public double calculateAngle() {
@@ -85,6 +89,11 @@ public class GolfBall extends CollidableEntity {
 	public double getSpeed() {
 		return this.speed;
 	}
+	
+	public void hitObstacle() {
+		this.angle = - this.angle ;
+		setSpeed(maxSpeed);
+	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
@@ -99,7 +108,7 @@ public class GolfBall extends CollidableEntity {
 			gc.setLineWidth(2.0);
 			gc.strokeLine(x, y, Math.max(0, 2 * x - InputUtility.mousePosX),
 					Math.max(0, 2 * y - InputUtility.mousePosY));
-			calculateAngle();
+//			calculateAngle();
 		}
 
 	}

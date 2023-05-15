@@ -1,15 +1,8 @@
 package main;
 
-import input.InputUtility;
-
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import logic.GameLogic;
-import pane.GolfCourse;
-import pane.RootPane;
 import pane.WelcomePage;
 
 public class Main extends Application {
