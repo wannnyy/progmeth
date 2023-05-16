@@ -6,7 +6,7 @@ import javafx.scene.shape.ArcType;
 import logic.CollidableEntity;
 import sharedObject.RenderableHolder;
 
-public class Tree extends CollidableEntity {
+public class Tree extends Obstacle{
 	public Tree(int x, int y) {
 		this.x = x ; 
 		this.y = y ; 
