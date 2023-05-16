@@ -19,7 +19,7 @@ public class GameLogic {
 		RenderableHolder.getInstance().add(field);
 		this.gameObjectContainer = new ArrayList<Entity>();
 		golfBall = new GolfBall(600,400);
-		tree = new Tree(400,400);
+		tree = new Tree(200,400);
 		addNewObject(golfBall);
 		addNewObject(tree);
 	}

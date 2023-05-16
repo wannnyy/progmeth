@@ -7,9 +7,7 @@ import java.util.List;
 
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
-//import logic.Field;
-//import logic.Mine;
-//import logic.Tank;
+
 
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
@@ -17,7 +15,7 @@ public class RenderableHolder {
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	public static Image mapSprite;
-	public static Image mineSprite;
+	public static Image mineSprite,treeSprite;
 	public static AudioClip  explosionSound;
 
 	static {
@@ -38,11 +36,9 @@ public class RenderableHolder {
 	}
 
 	public static void loadResource() {
-//		mapSprite = new Image(ClassLoader.getSystemResource("Map.png").toString());
+		mapSprite = new Image(ClassLoader.getSystemResource("grass.png").toString());
 //		mineSprite = new Image(ClassLoader.getSystemResource("Mine.png").toString());
-//		mapSprite = new Image("file:res/Map.png");
-//		mineSprite = new Image("file:res/Mine.png");
-//
+		treeSprite = new Image(ClassLoader.getSystemResource("tree.png").toString());
 //		explosionSound = new AudioClip("file:res/Explosion.wav");
 	}
 
@@ -50,12 +46,6 @@ public class RenderableHolder {
 		System.out.println("add");
 		entities.add(entity);
 		Collections.sort(entities, comparator);
-//		for(IRenderable x: entities){
-////			if(x instanceof Tank) System.out.println("tank");
-////			if(x instanceof Mine) System.out.println("mine");
-////			if(x instanceof Field) System.out.println("field");
-//			
-//		}
 	}
 
 	public void update() {
