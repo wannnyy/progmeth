@@ -8,19 +8,17 @@ import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 
-
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	public static Image mapSprite;
-	public static Image mineSprite,treeSprite;
-	public static AudioClip  hitSound;
-	public static AudioClip treeHit ;
-	public static AudioClip rockHit ;
-
-	public static Image rockSprite;  
+	public static Image mineSprite, treeSprite;
+	public static AudioClip hitSound;
+	public static AudioClip treeHit;
+	public static AudioClip rockHit;
+	public static Image rockSprite;
 
 	static {
 		loadResource();
@@ -45,8 +43,7 @@ public class RenderableHolder {
 		hitSound = new AudioClip(ClassLoader.getSystemResource("hitsound.mp3").toString());
 		treeHit = new AudioClip(ClassLoader.getSystemResource("treehit.mp3").toString());
 		rockHit = new AudioClip(ClassLoader.getSystemResource("rockhit.mp4").toString());
-		rockSprite =  new Image(ClassLoader.getSystemResource("rock.png").toString());
-
+		rockSprite = new Image(ClassLoader.getSystemResource("rock.png").toString());
 	}
 
 	public void add(IRenderable entity) {

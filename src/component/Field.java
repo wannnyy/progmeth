@@ -8,15 +8,11 @@ import sharedObject.RenderableHolder;
 
 public class Field implements IRenderable {
 
-	private static int[][] field = { { 0, 0, 0, 0, 0, 0, 0, 0, -1, 0,0 ,0},
-			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0,0},
-			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,1,0}, 
-			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,2,1},
+	private static int[][] field = { { 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1 },
 
-			{ 0, 0, 0, 0, 0, 0, -2, 0, 0, 0 ,0,1},
-			{ 0, -2, 0, 0, 0, 0, 0, 0, 0, 0 ,1,0},
-			{ 0, 0, 0, 0, -1, 0, 0, 0, 0, 0 ,2,0},
-			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0,1} };
+			{ 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1 }, { 0, -2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 },
+			{ 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 2, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 } };
 
 	public int getTerrain(int x, int y) {
 		if (x < 0 || x >= field[0].length || y < 0 || y >= field.length)
@@ -47,7 +43,7 @@ public class Field implements IRenderable {
 //				gc.drawImage(croppedImage, x * 64, y * 64);
 //			}
 //		}
-//		gc.setFill(Color.WHITE);
+//		gc.setFill(Color.GREENYELLOW);
 //		gc.fillRect(0,0, 800, 585);
 		gc.drawImage(RenderableHolder.mapSprite, 0, 0);
 

@@ -10,15 +10,15 @@ import sharedObject.RenderableHolder;
 public class GolfBall extends CollidableEntity {
 	private final double maxSpeed = 10;
 	private int powerPercent;
-	private double speed, angle;
-	private final double speedDecayRate = 0.25;
+	private double speed ,angle;
+	private final double speedDecayRate = 0.25 ;
 
 	public GolfBall(double x, double y) {
 		this.setPowerPercent(0);
 		this.setSpeed(0);
 		this.setX(x);
 		this.setY(y);
-		this.radius = 10;
+		this.radius = 10 ; 
 	}
 
 	public double getAngle() {
@@ -39,30 +39,62 @@ public class GolfBall extends CollidableEntity {
 		double dy = y - InputUtility.mousePosY;
 		double distance = Math.sqrt(dx * dx + dy * dy);
 		double speed = distance / 10.0; // Adjust this value as necessary
-		return Math.min(speed, 10.0); // Limit the speed to a maximum of 10.0 units per frame
+	    return Math.min(speed, 10.0); // Limit the speed to a maximum of 10.0 units per frame
 	}
 
 	public void update() {
 		if (InputUtility.mouseRelease && this.getSpeed() == 0) {
-			setSpeed(Math.min(maxSpeed, calculatePower()));
-			InputUtility.mouseRelease = false;
-			angle = calculateAngle();
+			setSpeed(Math.min(maxSpeed,calculatePower()));
+			InputUtility.mouseRelease = false ;
+			angle = calculateAngle(); 
 			System.out.println(angle);
 			RenderableHolder.hitSound.play();
 		}
-		if(speed != 0 ) {
+		if(speed != 0) {
+			setSpeed(getSpeed()-speedDecayRate);
 			hitGameScreen();
-			setSpeed(getSpeed() - speedDecayRate);
 			move();			
+		}
+	}
+	public void hitGameScreen() {
+		if (this.x <= this.radius || this.x >= 800 - this.radius) {
+			hitObstacle();
+		}
+		if (this.y <= this.radius || this.y >= 640-75 - this.radius) {
+			hitObstacle();
 		}
 	}
 
 	public double calculateAngle() {
 		double dx = this.x - InputUtility.mousePosX;
 		double dy = -this.y + InputUtility.mousePosY;
-		System.out.println("" + dx + " " + dy + " " + Math.atan2(dy, dx));
+		System.out.println(""+ dx + " " + dy + " "+ Math.atan2(dy	, dx) );
 		return Math.atan2(dy, dx);
 	}
+	
+	public void reverseXVelocity() {
+        double currentAngle = angle;
+        double currentXVelocity = speed * Math.cos(currentAngle);
+        double currentYVelocity = speed * Math.sin(currentAngle);
+
+        double newXVelocity = -currentXVelocity;
+        double newYVelocity = currentYVelocity;
+
+        speed = Math.sqrt(newXVelocity * newXVelocity + newYVelocity * newYVelocity);
+        angle = Math.toDegrees(Math.atan2(newYVelocity, newXVelocity));
+    }
+
+    public void reverseYVelocity() {
+        double currentAngle = angle;
+        double currentXVelocity = speed * Math.cos(currentAngle);
+        double currentYVelocity = speed * Math.sin(currentAngle);
+
+        double newXVelocity = currentXVelocity;
+        double newYVelocity = -currentYVelocity;
+
+        speed = Math.sqrt(newXVelocity * newXVelocity + newYVelocity * newYVelocity);
+        angle = Math.toDegrees(Math.atan2(newYVelocity, newXVelocity));
+    }
 
 	public int getPowerPercent() {
 		return powerPercent;
@@ -98,20 +130,12 @@ public class GolfBall extends CollidableEntity {
 	public double getSpeed() {
 		return this.speed;
 	}
-
+	
 	public void hitObstacle() {
-		this.angle += Math.PI;
+		this.angle += Math.PI ;
 //		setSpeed(maxSpeed);
 	}
-
-	public void hitGameScreen() {
-		if (this.x <= this.radius || this.x >= 800 - this.radius) {
-			hitObstacle();
-		}
-		if (this.y <= this.radius || this.y >= 640-75 - this.radius) {
-			hitObstacle();
-		}
-	}
+	
 
 	@Override
 	public void draw(GraphicsContext gc) {

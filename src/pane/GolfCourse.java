@@ -17,63 +17,6 @@ public class GolfCourse extends Canvas {
 		addListerner();
 	}
 
-//	public void addListerner() {
-//		System.out.println("pls work");
-//		this.setOnKeyPressed((KeyEvent event) ->{
-//			System.out.println("asdad");
-//			InputUtility.setKeyPressed(event.getCode(), true);
-//		});
-//	
-//		this.setOnKeyReleased((KeyEvent event) -> {
-//			InputUtility.setKeyPressed(event.getCode(), false);
-//		});
-//
-//		this.setOnMousePressed((MouseEvent event) -> {
-//			if (event.getButton() == MouseButton.PRIMARY)
-//				InputUtility.mouseLeftDown();
-//		});
-//
-//		this.setOnMouseReleased((MouseEvent event) -> {
-//			if (event.getButton() == MouseButton.PRIMARY)
-//				InputUtility.mouseLeftRelease();
-//		});
-//
-//		this.setOnMouseEntered((MouseEvent event) -> {
-//			InputUtility.mouseOnScreen = true;
-//		});
-//
-//		this.setOnMouseExited((MouseEvent event) -> {
-//			InputUtility.mouseOnScreen = false;
-//		});
-//
-//		this.setOnMouseMoved((MouseEvent event) -> {
-//			if (InputUtility.mouseOnScreen) {
-//				InputUtility.mouseX = event.getX();
-//				InputUtility.mouseY = event.getY();
-//			}
-//		});
-//
-//		this.setOnMouseDragged((MouseEvent event) -> {
-//			if (InputUtility.mouseOnScreen) {
-//				InputUtility.mouseX = event.getX();
-//				InputUtility.mouseY = event.getY();
-//			}
-//		});
-//		
-//		this.setOnDragDetected((MouseEvent event)->{
-//			if(InputUtility.mouseOnScreen) {				
-//				System.out.println("Mouse Draging");
-//				InputUtility.isDrag = true ; 
-//				InputUtility.mouseX = event.getX();
-//				InputUtility.mouseY = event.getY();
-//				InputUtility.mousePosX = event.getX();
-//				InputUtility.mousePosY = event.getY();
-//				System.out.println(event.getX()+" " + event.getY());
-//			}
-//		});
-
-//	}
-
 	public void addListerner() {
 		System.out.println("detect");
 		this.setOnKeyPressed((KeyEvent event) -> {
@@ -89,19 +32,17 @@ public class GolfCourse extends Canvas {
 			if (event.getButton() == MouseButton.PRIMARY) {
 				InputUtility.isDrag = true;
 				InputUtility.mouseLeftDown();
-				InputUtility.mouseRelease = false ; 
+				InputUtility.mouseRelease = false;
 			}
-//			System.out.println("Pressed " + InputUtility.isDrag);
+
 		});
 
 		this.setOnMouseReleased((MouseEvent event) -> {
 			if (event.getButton() == MouseButton.PRIMARY) {
-				InputUtility.mouseRelease = true ; 
+				InputUtility.mouseRelease = true;
 				InputUtility.mouseLeftRelease();
 				InputUtility.isDrag = false;
 			}
-//			System.out.println("Released " + InputUtility.isDrag);
-//			System.out.println(InputUtility.mousePosX + " " + InputUtility.mousePosY);
 
 		});
 
