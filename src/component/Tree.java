@@ -21,6 +21,8 @@ public class Tree extends Obstacle{
 	public void onCollision(GolfBall golfBall){
 		golfBall.hitObstacle();
 		this.destroyed = true;
+		RenderableHolder.treeHit.play();
+
 	}
 	
 	public double getX() {

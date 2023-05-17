@@ -7,6 +7,7 @@ import component.Entity;
 import component.Field;
 import component.GolfBall;
 import component.Obstacle;
+import component.Rock;
 import component.Tree;
 import sharedObject.RenderableHolder;
 
@@ -15,6 +16,7 @@ public class GameLogic {
 	private List<Obstacle> obstacle ; 
 	private GolfBall golfBall; 
 	private Tree tree ,tree1 ;
+	private Rock rock ;
 	
 	public GameLogic() {
 		Field field = new Field();
@@ -24,9 +26,11 @@ public class GameLogic {
 		golfBall = new GolfBall(600,400);
 		tree = new Tree(200,400);
 		tree1 = new Tree(400,400);
+		rock = new Rock(300,300);
 		addNewObject(golfBall);
 		addNewObject(tree);
 		addNewObject(tree1);
+		addNewObject(rock);
 	}
 	protected void addNewObject(Entity entity){
 		gameObjectContainer.add(entity);
@@ -38,9 +42,6 @@ public class GameLogic {
 	}
 	public void logicUpdate(){
 		golfBall.update();
-//		System.out.println("golf update");
-//		System.out.println(golfBall.collideWith(tree));
-//		System.out.println(Math.hypot(tree.getX()-golfBall.getX(), tree.getY()-golfBall.getY())+ " " + (tree.radius + golfBall.radius));
 		for(Obstacle e : obstacle)
 		{
 			if(golfBall.collideWith(e) && !e.isDestroyed()) {
