@@ -17,10 +17,9 @@ public class GolfCourse extends Canvas {
 		addListerner();
 	}
 
+
 	public void addListerner() {
-		System.out.println("detect");
 		this.setOnKeyPressed((KeyEvent event) -> {
-			System.out.println("asdawdad");
 			InputUtility.setKeyPressed(event.getCode(), true);
 		});
 
@@ -32,14 +31,14 @@ public class GolfCourse extends Canvas {
 			if (event.getButton() == MouseButton.PRIMARY) {
 				InputUtility.isDrag = true;
 				InputUtility.mouseLeftDown();
-				InputUtility.mouseRelease = false;
+				InputUtility.mouseRelease = false ; 
 			}
 
 		});
 
 		this.setOnMouseReleased((MouseEvent event) -> {
 			if (event.getButton() == MouseButton.PRIMARY) {
-				InputUtility.mouseRelease = true;
+				InputUtility.mouseRelease = true ; 
 				InputUtility.mouseLeftRelease();
 				InputUtility.isDrag = false;
 			}
@@ -64,12 +63,10 @@ public class GolfCourse extends Canvas {
 		this.setOnMouseDragged((MouseEvent event) -> {
 			if (InputUtility.mouseOnScreen) {
 				InputUtility.mouseX = event.getX();
-//				System.out.println("dragging");
 				InputUtility.mouseY = event.getY();
 				InputUtility.mousePosX = event.getX();
 				InputUtility.mousePosY = event.getY();
 				InputUtility.isDrag = true;
-//				System.out.println(InputUtility.isDrag);
 			}
 		});
 	}

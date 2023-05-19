@@ -7,6 +7,8 @@ import java.util.List;
 
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
@@ -14,11 +16,22 @@ public class RenderableHolder {
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	public static Image mapSprite;
-	public static Image mineSprite, treeSprite;
+	public static Image mineSprite;
+	public static Image treeSprite;
+	public static Image backgroundImage;
+	public static Image golfBall;
+	public static Image rockSprite;
+	public static Image waterSprite;
 	public static AudioClip hitSound;
+	public static AudioClip clickSound;
 	public static AudioClip treeHit;
 	public static AudioClip rockHit;
-	public static Image rockSprite;
+	public static AudioClip puttSound ;
+	public static AudioClip failSound ;
+	public static AudioClip successSound ;
+	public static AudioClip waterBloopSound ;
+	public static Media backgroundMusic;
+
 
 	static {
 		loadResource();
@@ -33,6 +46,10 @@ public class RenderableHolder {
 		};
 	}
 
+	public void setEntities(List<IRenderable> entities) {
+		this.entities = entities;
+	}
+
 	public static RenderableHolder getInstance() {
 		return instance;
 	}
@@ -40,14 +57,32 @@ public class RenderableHolder {
 	public static void loadResource() {
 		mapSprite = new Image(ClassLoader.getSystemResource("Grasses.png").toString());
 		treeSprite = new Image(ClassLoader.getSystemResource("tree.png").toString());
+		rockSprite = new Image(ClassLoader.getSystemResource("rock.png").toString());
+		waterSprite = new Image(ClassLoader.getSystemResource("water.png").toString());
+		golfBall = new Image(ClassLoader.getSystemResource("golfBall.png").toString());
 		hitSound = new AudioClip(ClassLoader.getSystemResource("hitsound.mp3").toString());
 		treeHit = new AudioClip(ClassLoader.getSystemResource("treehit.mp3").toString());
+		puttSound = new AudioClip(ClassLoader.getSystemResource("puttsound.mp3").toString());
 		rockHit = new AudioClip(ClassLoader.getSystemResource("rockhit.mp4").toString());
-		rockSprite = new Image(ClassLoader.getSystemResource("rock.png").toString());
+		backgroundImage = new Image(ClassLoader.getSystemResource("bgi2.jpg").toString());
+		clickSound = new AudioClip(ClassLoader.getSystemResource("clicksound.mp3").toString());
+		failSound = new AudioClip(ClassLoader.getSystemResource("failsound.mp3").toString());
+		successSound = new AudioClip(ClassLoader.getSystemResource("successsound.mp3").toString());
+		waterBloopSound = new AudioClip(ClassLoader.getSystemResource("waterbloop.mp3").toString());
+		backgroundMusic = new Media(ClassLoader.getSystemResource("backgroundMusic.mp3").toString());
+	}
+	
+	public static void playBackgroundMusic()
+	{
+		MediaPlayer mediaPlayer = new MediaPlayer(backgroundMusic);
+		mediaPlayer.setVolume(0.05);
+		mediaPlayer.play();
+		mediaPlayer.setOnEndOfMedia(()->{
+			playBackgroundMusic();
+		});
 	}
 
 	public void add(IRenderable entity) {
-		System.out.println("add");
 		entities.add(entity);
 		Collections.sort(entities, comparator);
 	}

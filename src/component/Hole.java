@@ -3,7 +3,6 @@ package component;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import logic.CollidableEntity;
 
 public class Hole extends Obstacle {
 
@@ -12,6 +11,7 @@ public class Hole extends Obstacle {
 
 	public Hole(double centerX, double centerY) {
 		circle = new Circle(centerX, centerY, radius, Color.BLACK);
+		this.z = -200;
 	}
 
 	public Circle getCircle() {
@@ -33,10 +33,8 @@ public class Hole extends Obstacle {
 		double ballCenterX = ball.getX();
 		double ballCenterY = ball.getY();
 		double ballRadius = 10;
-
 		double distance = Math
 				.sqrt(Math.pow(ballCenterX - circle.getCenterX(), 2) + Math.pow(ballCenterY - circle.getCenterY(), 2));
-
 		return distance <= (radius - ballRadius);
 	}
 

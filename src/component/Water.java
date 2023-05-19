@@ -3,25 +3,23 @@ package component;
 import javafx.scene.canvas.GraphicsContext;
 import sharedObject.RenderableHolder;
 
-public class Tree extends Obstacle {
-	public Tree(int x, int y) {
+public class Water extends Obstacle {
+	public Water(int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.z = -100;
-		this.radius = 20;
+		this.radius = 40;
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.treeSprite, x - radius, y - radius);
+		gc.drawImage(RenderableHolder.waterSprite, x - radius, y - radius);
 	}
 
 	public void onCollision(GolfBall golfBall) {
-		golfBall.hitObstacle();
-		this.destroyed = true;
-		RenderableHolder.treeHit.play();
-
+		golfBall.getGameLogic().setWin(false);
+		RenderableHolder.waterBloopSound.play();
 	}
 
 	public double getX() {

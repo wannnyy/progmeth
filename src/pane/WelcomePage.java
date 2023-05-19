@@ -1,53 +1,61 @@
 package pane;
 
-import input.InputUtility;
-import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-import logic.GameLogic;
-import main.Main;
 import sharedObject.RenderableHolder;
 
-public class WelcomePage extends VBox {
+public class WelcomePage extends StackPane {
 	private Button startButton;
 	private Button exitButton;
+	private DropDown dropDown;
 	private RootPane rootPane;
-	private Main myMain;
+	public WelcomePage(RootPane rootPane) {
+		this.rootPane = rootPane; 
+		this.setPrefWidth(800);
+		this.setPrefHeight(640);
+		ImageView backgroundImageView = new ImageView(RenderableHolder.backgroundImage);
 
-	public WelcomePage(Stage stage, Main main) {
-		// Create a label to display the title of the game
-		this.myMain = main;
+		getChildren().add(backgroundImageView);
+
 		Label titleLabel = new Label("My Mini Golf Game");
-		titleLabel.setStyle("-fx-font-size: 36px;");
+		titleLabel.getStyleClass().add("text-title");
+		this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
 		// Create a button to start the game
 		startButton = new Button("Start Game");
-		startButton.setStyle("-fx-font-size: 18px;");
+		startButton.getStyleClass().add("button-start");
+		startButton.setOnAction(event -> {
+			RenderableHolder.clickSound.play();
+			rootPane.setPane(rootPane.getGameScreen());
+			rootPane.getGameScreen().start();
+		});
 
 		// Create a button to exit the game
 		exitButton = new Button("Exit Game");
-		exitButton.setStyle("-fx-font-size: 18px;");
-
-		// Add event handlers to the buttons
-		startButton.setOnAction(event -> {
-			// Handle the start button click event
-			// (e.g. start the game)
-			stage.setScene(myMain.getGameScene());
+		exitButton.getStyleClass().add("button-exit");
+		exitButton.setOnAction(event -> {
+			RenderableHolder.clickSound.play();
+			Platform.exit();
 		});
-		exitButton.setOnAction(event -> Platform.exit());
+
+		dropDown = new DropDown(rootPane);
 
 		// Add the components to the pane
-		setSpacing(20);
 		setPadding(new Insets(40));
 		setAlignment(Pos.CENTER);
-		getChildren().addAll(titleLabel, startButton, exitButton);
+		VBox buttonsBox = new VBox(10);
+		buttonsBox.setSpacing(40);
+		buttonsBox.getChildren().addAll(titleLabel, startButton, exitButton, dropDown);
+		buttonsBox.setAlignment(Pos.CENTER);
+
+		// Add the VBox to the StackPane
+		getChildren().add(buttonsBox);
 	}
 
 	// Getter methods for the start and exit buttons
@@ -58,9 +66,5 @@ public class WelcomePage extends VBox {
 
 	public Button getExitButton() {
 		return exitButton;
-	}
-
-	public RootPane getRootPane() {
-		return rootPane;
 	}
 }

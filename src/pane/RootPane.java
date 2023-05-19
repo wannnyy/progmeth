@@ -1,17 +1,52 @@
 package pane;
 
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import main.Main;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
-public class RootPane extends VBox {
-	private static TopGamePane topGamePane;
-	private static GolfCourse golfCourse;
+public class RootPane extends StackPane {
+	private WelcomePage welcomePage ; 
+	private GameScreen gameScreen ;
+	private String selectedMap;
 
-	public RootPane(GolfCourse golfcourse, Main main) {
-		topGamePane = new TopGamePane(main);
-		this.golfCourse = golfcourse;
-		this.getChildren().add(topGamePane);
-		this.getChildren().add(golfCourse);
+
+	public RootPane() {
+		this.setPrefWidth(800);
+		this.setPrefHeight(640);
+		welcomePage = new WelcomePage(this);
+		gameScreen = new GameScreen(this);
+		this.getChildren().add(welcomePage);
 	}
+	
+	public void setPane(Pane pane) {
+		this.getChildren().clear();
+		this.getChildren().add(pane);
+	}
+	
+	public WelcomePage getWelcomePage() {
+		return welcomePage;
+	}
+	
+	public void setWelcomePage(WelcomePage welcomePage) {
+		this.welcomePage = welcomePage;
+	}
+	
+	public GameScreen getGameScreen() {
+		return gameScreen;
+	}
+	
+	public void setGameScreen(GameScreen gameScreen) {
+		this.gameScreen = gameScreen;
+	}
+	
+	
+	public String getSelectedMap() {
+		return selectedMap;
+	}
+	public void setSelectedMap(String selectedMap) {
+		this.selectedMap = selectedMap;
+	}
+	
+	
+	
+	
 }
