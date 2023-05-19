@@ -14,22 +14,20 @@ public class DropDown extends HBox {
 		choiceBox.getItems().addAll("Map 1", "Map 2", "Map 3");
 		choiceBox.setValue("Map 1");
 		rootPane.setSelectedMap("Map 1");
-		
-		String soundFile = getClass().getResource("/clicksound.mp3").toString();
-        Media buttonClickMedia = new Media(soundFile);
-        MediaPlayer buttonClickSound;
-        buttonClickSound = new MediaPlayer(buttonClickMedia);
 
+		String soundFile = getClass().getResource("/clicksound.mp3").toString();
+		Media buttonClickMedia = new Media(soundFile);
+		MediaPlayer buttonClickSound;
+		buttonClickSound = new MediaPlayer(buttonClickMedia);
 
 		// Create a Button
 		Button dropDownButton = new Button("Select");
 		dropDownButton.getStyleClass().add("select-button");
 
-
 		// Event handler for the button click
 		dropDownButton.setOnAction(event -> {
 			buttonClickSound.seek(Duration.ZERO);
-		    buttonClickSound.play();
+			buttonClickSound.play();
 			String selectedOption = choiceBox.getValue();
 			System.out.println("Selected Option: " + selectedOption);
 			if (selectedOption != null) {

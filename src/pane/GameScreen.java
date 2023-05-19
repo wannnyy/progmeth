@@ -6,20 +6,20 @@ import javafx.scene.layout.VBox;
 import logic.GameLogic;
 import sharedObject.RenderableHolder;
 
-public class GameScreen extends VBox{
+public class GameScreen extends VBox {
 	private GameLogic gameLogic;
 	private GolfCourse golfCourse;
 	private TopGamePane topGamePane;
-	private RootPane rootPane ;
+	private RootPane rootPane;
 	private AnimationTimer animation;
 
 	public GameScreen(RootPane rootPane) {
 		this.setPrefWidth(800);
 		this.setPrefHeight(640);
-		this.rootPane = rootPane; 
+		this.rootPane = rootPane;
 		golfCourse = new GolfCourse();
 		gameLogic = new GameLogic(rootPane);
-		
+
 		VBox gamePane = createPane(golfCourse);
 		this.getChildren().add(gamePane);
 		this.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());

@@ -26,12 +26,11 @@ public class RenderableHolder {
 	public static AudioClip clickSound;
 	public static AudioClip treeHit;
 	public static AudioClip rockHit;
-	public static AudioClip puttSound ;
-	public static AudioClip failSound ;
-	public static AudioClip successSound ;
-	public static AudioClip waterBloopSound ;
+	public static AudioClip puttSound;
+	public static AudioClip failSound;
+	public static AudioClip successSound;
+	public static AudioClip waterBloopSound;
 	public static Media backgroundMusic;
-
 
 	static {
 		loadResource();
@@ -71,13 +70,12 @@ public class RenderableHolder {
 		waterBloopSound = new AudioClip(ClassLoader.getSystemResource("waterbloop.mp3").toString());
 		backgroundMusic = new Media(ClassLoader.getSystemResource("backgroundMusic.mp3").toString());
 	}
-	
-	public static void playBackgroundMusic()
-	{
+
+	public static void playBackgroundMusic() {
 		MediaPlayer mediaPlayer = new MediaPlayer(backgroundMusic);
 		mediaPlayer.setVolume(0.05);
 		mediaPlayer.play();
-		mediaPlayer.setOnEndOfMedia(()->{
+		mediaPlayer.setOnEndOfMedia(() -> {
 			playBackgroundMusic();
 		});
 	}

@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 import sharedObject.RenderableHolder;
 
 public class GameEndScreen extends VBox {
-	private RootPane rootPane ; 
+	private RootPane rootPane;
 	private HBox buttonSection;
 	private Label titleLabel;
 	private boolean isWin;
@@ -40,7 +40,6 @@ public class GameEndScreen extends VBox {
 		});
 		reset.getStyleClass().add("ending-reset");
 
-
 		Button home = new Button();
 		home.setText("Home");
 		home.setOnAction(event -> {
@@ -49,7 +48,6 @@ public class GameEndScreen extends VBox {
 		});
 		home.getStyleClass().add("ending-home");
 
-		
 		buttonSection.setSpacing(40);
 		buttonSection.getChildren().addAll(reset, home);
 		buttonSection.setAlignment(Pos.CENTER);

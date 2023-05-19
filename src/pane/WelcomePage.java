@@ -15,8 +15,9 @@ public class WelcomePage extends StackPane {
 	private Button exitButton;
 	private DropDown dropDown;
 	private RootPane rootPane;
+
 	public WelcomePage(RootPane rootPane) {
-		this.rootPane = rootPane; 
+		this.rootPane = rootPane;
 		this.setPrefWidth(800);
 		this.setPrefHeight(640);
 		ImageView backgroundImageView = new ImageView(RenderableHolder.backgroundImage);

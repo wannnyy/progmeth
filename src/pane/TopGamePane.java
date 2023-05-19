@@ -11,11 +11,11 @@ import sharedObject.RenderableHolder;
 
 public class TopGamePane extends BorderPane {
 	private Text shotParameter;
-	private RootPane rootPane; 
+	private RootPane rootPane;
 	private int maxShot = 8;
 
 	public TopGamePane(RootPane rootPane) {
-		this.rootPane = rootPane ; 
+		this.rootPane = rootPane;
 		this.setBackground(new Background(new BackgroundFill(Color.DARKGREEN, null, null)));
 		this.setPrefWidth(800);
 		this.setPrefHeight(75);
@@ -27,7 +27,6 @@ public class TopGamePane extends BorderPane {
 
 		Button reset = createResetButton();
 		reset.getStyleClass().add("button-reset");
-
 
 		this.setShotParameter("0");
 		this.setCenter(reset);

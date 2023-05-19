@@ -22,19 +22,19 @@ public class GameLogic {
 	private boolean isWin;
 	private GolfBall golfBall;
 	private Hole hole;
-	private RootPane rootPane ;
+	private RootPane rootPane;
 	private final Map map = new Map();
 
 	public GameLogic(RootPane rootPane) {
-		this.rootPane = rootPane ; 
+		this.rootPane = rootPane;
 		Field field = new Field();
 		isWin = true;
 		shotCounter = 0;
 		RenderableHolder.getInstance().add(field);
-		
+
 		this.gameObjectContainer = new ArrayList<Entity>();
 		this.obstacle = new ArrayList<Obstacle>();
-		
+
 		selectMap(rootPane.getSelectedMap());
 	}
 
@@ -60,17 +60,17 @@ public class GameLogic {
 
 		} else if (selectedMap.equals("Map 2")) {
 			ArrayList<Entity> map2 = map.buildMap2();
-			golfBall = new GolfBall(600, 400, this);
-			hole = new Hole(100, 200);
+			golfBall = new GolfBall(180, 180, this);
+			hole = new Hole(500, 300);
 			addNewObject(golfBall);
 			addNewObject(hole);
 			this.maxShot = 8;
-			for(Entity e : map2) {
+			for (Entity e : map2) {
 				addNewObject(e);
 			}
 		} else {
-			golfBall = new GolfBall(600, 400, this);
-			hole = new Hole(100, 200);
+			golfBall = new GolfBall(100, 100, this);
+			hole = new Hole(500, 300);
 			addNewObject(golfBall);
 			addNewObject(hole);
 			this.maxShot = 4;
@@ -84,7 +84,7 @@ public class GameLogic {
 			obstacle.add((Obstacle) entity);
 		}
 	}
-	
+
 	public void logicUpdate() {
 		shotCounter = golfBall.getShotCount();
 		golfBall.update();
@@ -101,15 +101,16 @@ public class GameLogic {
 		if (!isWin) {
 			showEndingScene();
 		}
-		
+
 	}
-	
+
 	public void showEndingScene() {
 		this.rootPane.getGameScreen().reset();
 		GameEndScreen endingScreen = new GameEndScreen(rootPane, isWin);
 		Scene endingScene = new Scene(endingScreen, 800, 600);
 		rootPane.setPane(endingScreen);
 	}
+
 	public boolean isWin() {
 		return isWin;
 	}
@@ -141,7 +142,6 @@ public class GameLogic {
 	public void setObstacle(List<Obstacle> obstacle) {
 		this.obstacle = obstacle;
 	}
-
 
 	public int getShotCounter() {
 		return shotCounter;

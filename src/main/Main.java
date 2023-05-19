@@ -19,6 +19,7 @@ public class Main extends Application {
 		stage.setScene(scene);
 		stage.setTitle("MiniGolf");
 		stage.setResizable(false);
+		stage.getIcons().add(RenderableHolder.golfBall);
 		stage.show();
 		RenderableHolder.playBackgroundMusic();
 	}
